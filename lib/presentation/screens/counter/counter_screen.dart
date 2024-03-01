@@ -26,6 +26,14 @@ class _CounterScreenState extends State<CounterScreen> {
     });
   }
 
+  void _decreaseCounter() {
+    setState(() {
+      if (_clickCounter > 0) {
+        _clickCounter--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +67,24 @@ class _CounterScreenState extends State<CounterScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: _resetCounter,
+            child: const Icon(Icons.replay),
+          ),
+          const SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: _decreaseCounter,
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
