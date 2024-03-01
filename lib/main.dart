@@ -5,14 +5,22 @@ void main() {
   runApp(const App());
 }
 
+final colorScheme = ColorScheme.fromSeed(seedColor: Colors.cyan);
+
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: CounterScreen(),
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData().copyWith(
+        colorScheme: colorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: colorScheme.primaryContainer,
+        ),
+      ),
+      home: const CounterScreen(),
     );
   }
 }
