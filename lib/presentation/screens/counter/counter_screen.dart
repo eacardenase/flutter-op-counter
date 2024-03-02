@@ -28,9 +28,7 @@ class _CounterScreenState extends State<CounterScreen> {
 
   void _decreaseCounter() {
     setState(() {
-      if (_clickCounter > 0) {
-        _clickCounter--;
-      }
+      if (_clickCounter > 0) _clickCounter--;
     });
   }
 
@@ -70,25 +68,34 @@ class _CounterScreenState extends State<CounterScreen> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            shape: const CircleBorder(),
-            child: const Icon(Icons.add),
-          ),
+          CustomButton(onPressed: _incrementCounter, icon: Icons.add),
           const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: _resetCounter,
-            shape: const CircleBorder(),
-            child: const Icon(Icons.replay),
-          ),
+          CustomButton(onPressed: _resetCounter, icon: Icons.replay),
           const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: _decreaseCounter,
-            shape: const CircleBorder(),
-            child: const Icon(Icons.remove),
-          ),
+          CustomButton(onPressed: _decreaseCounter, icon: Icons.remove),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.icon,
+  });
+
+  final void Function() onPressed;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: onPressed,
+      elevation: 0,
+      shape: const CircleBorder(),
+      child: Icon(icon),
     );
   }
 }
