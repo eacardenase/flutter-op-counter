@@ -72,16 +72,19 @@ class _CounterScreenState extends State<CounterScreen> {
         children: [
           FloatingActionButton(
             onPressed: _incrementCounter,
+            shape: const CircleBorder(),
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
             onPressed: _resetCounter,
+            shape: const CircleBorder(),
             child: const Icon(Icons.replay),
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
             onPressed: _decreaseCounter,
+            shape: const CircleBorder(),
             child: const Icon(Icons.remove),
           ),
         ],
